@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="css/shop.css">
 <?php
 require_once "inc/package.inc.php";
-require('inc/config.php');
 require('shop.php');
 
 $view = "views/product.php";
