@@ -3,7 +3,7 @@
     require('inc/config.php');
 
     $view = "views/index.php";
-    $sectionActive = "Home";
+    $sectionActive = "Contact";
 
     include_once $template;
 ?>
