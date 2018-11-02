@@ -9,10 +9,7 @@ WHERE s.StockItemID = 199";
 
 $stmt = $db->prepare($query);
 if($stmt->execute()){
-    print("succeed");
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        print('succes');
-        print($row["stockitemname"]);
         ?>
 <div class="container">
     <div class="row">
@@ -32,12 +29,16 @@ if($stmt->execute()){
                     <p><?php echo $row["brand"]; ?></p>
                     <p><?php echo $row["size"]; ?></p>
                     <p><?php echo $row["leadtimedays"]; ?></p>
-                    <p><?php echo $row["ischillerstock"]; ?></p>
+                    <p><?php if($row['ischillerstock'] != 0){
+                        echo $row["ischillerstock"];} ?></p>
                     <p><?php echo $row["taxrate"]; ?></p>
                     <p><?php echo $row["marketingcomments"]; ?></p>
                     <p><?php echo $row["customfields"]; ?></p>
                     <p><?php echo $row["colorname"]; ?></p>
-                    <p><?php echo $row["quantityonhand"]; ?></p>
+                    <p><?php if ($row['quantityonhand'] > 0){
+                        echo $row["quantityonhand"];
+                    }else{
+                        print('Dit product is niet op voorraad');} ?></p>
                 </div>
             </div>
         </div>
