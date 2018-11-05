@@ -1,9 +1,10 @@
+ <link rel="stylesheet" href="css/shop.css">
 <?php
     require_once "inc/package.inc.php";
     require('inc/config.php');
 
-    $view = "views/index.php";
-    $sectionActive = "Home";
+    $view = "views/shop.php";
+    $sectionActive = "Shop";
 
     include_once $template;
 ?>
