@@ -5,8 +5,7 @@
     
     $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand
     FROM stockitems s
-    JOIN stockitemholdings f 
-    ON s.stockitemid = f.stockitemid";
+    JOIN stockitemholdings f ON s.stockitemid = f.stockitemid";
     $query_prepare = $db->prepare($query);
     if($query_prepare->execute()) {
     }
