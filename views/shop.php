@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <?php
-        foreach($list as $key => $value) {?>
+        foreach($list as $id => $value) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <img class="workshop" src="http://placehold.it/320x150">

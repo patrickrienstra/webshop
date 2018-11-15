@@ -3,7 +3,10 @@
 require_once "inc/package.inc.php";
 require('inc/config.php');
 
-$id=filter_input(1, 'id',FILTER_SANITIZE_NUMBER_INT);
+$id=filter_input(INPUT_GET, 'id',FILTER_SANITIZE_NUMBER_INT);
+$_SESSION['id'] = $id;
+print($_SESSION['id']);
+$winkelmand= array();
 
 $query="
 SELECT stockitemname, s.stockitemid, brand, size, leadtimedays, ischillerstock, taxrate, unitprice, marketingcomments, photo, customfields, colorname, quantityonhand
@@ -21,5 +24,6 @@ if($stmt->execute()) {
         include_once $template;
     }
 }
+
 
 ?>
