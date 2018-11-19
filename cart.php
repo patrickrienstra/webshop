@@ -18,9 +18,6 @@ if(isset($_SESSION['qty'])) {
             array_push($products, $row);
             }
         }
-}else{
-    echo'winkelmagen is leeg';
 }
 $view = 'views/cart.php';
-
 require_once $template;

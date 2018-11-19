@@ -1,4 +1,4 @@
-<x></x><div class="container">
+<div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-12 col-md-12">
             <div class="thumbnail">
@@ -12,7 +12,6 @@
                 <img class="productimg" src=<?php echo $row["photo"]; ?>>
                 <div class="caption">
                     <h4 class="pull-right"><?php echo $row["unitprice"]; ?></h4>
-                    <?php print($_SESSION['id']); ?>
                     <h4><?php echo $row["stockitemname"]; ?></h4>
                     <p><?php echo $row["brand"]; ?></p>
                     <p><?php echo $row["size"]; ?></p>
