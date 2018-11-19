@@ -1,7 +1,14 @@
 <div class="container">
     <div class="row">
         <?php
-        foreach($list as $id => $value) {?>
+        $page = $_GET['page'];
+        print('<div class="pagenumber">');
+        for($i = 1; $i <= $paginas; $i++) {
+            echo "<a href='?page=" . $i . "' class='choosepage'>" . $i . "</a>";
+        }
+        print("</div>");
+        foreach($list as $id => $value) {
+            if($id <= $max*$page && $id > $max*($page-1)) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <img class="workshop" src="http://placehold.it/320x150">
@@ -12,6 +19,7 @@
                 </div>
             </div>
             <?php
+            }
         }
             ?>
     </div>
