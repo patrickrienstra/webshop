@@ -4,17 +4,18 @@
 <div class="login-page">
   <div class="form">
 	  <?php
-	  if(isSet($_SESSION['msg'])){
+	  if(isSet($_SESSION['error'])){
 		  //Access your POST variables
-		  $temp = $_SESSION['msg'];
+		  $temp = $_SESSION['error'];
 		  echo $temp."<br/>";
 		  //Unset the useless session variable
-		  unset($_SESSION['msg']);
+		  unset($_SESSION['error']);
 	  }?>
 	<form class="login-form" action="logincheck.php" method="POST">
-	  <input type="text" name="l_email" placeholder="email"/>
-	  <input type="password" name="l_password" placeholder="password"/>
-	  <input type="submit" name="login" value="login" class="login-submit">
+	  <input type="text" name="username" placeholder="username"/>
+	  <input type="password" name="password" placeholder="password"/>
+	  <input type="submit" name="login" value="Login" class="login-submit">
+        <a href="registreer.php">Nog geen account? Registreer hier!</a>
 	</form>
   </div>
 </div>
