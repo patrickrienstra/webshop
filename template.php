@@ -19,6 +19,7 @@
                 <li class="nav-items <?php if($sectionActive == "About") { echo "active";} ?> "><a href="about.php">Over ons</a></li>
                 <li class="nav-items <?php if($sectionActive == "Shop") { echo "active";} ?> "><a href="shop.php">Webshop</a></li>
                 <li class="nav-items <?php if($sectionActive == "Contact") { echo "active";}?> "><a href="contact.php">Contact</a></li>
+                <li class="nav-items <?php if($sectionActive == "Cart"){ echo "active";}?>"><a href="cart.php">Cart</a></li>
                 <?php
                     if(!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] == false)) {
                         ?><li class="nav-items <?php if($sectionActive == "Login") { echo "active";}?> "><a href="login.php">Login</a></li><?php

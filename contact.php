@@ -5,5 +5,5 @@
     $view = "views/Contact.php";
     $sectionActive = "Contact";
 
-    include_once $template;
+    require_once $template;
 ?>
