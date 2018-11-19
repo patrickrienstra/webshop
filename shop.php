@@ -4,6 +4,7 @@
     require('inc/config.php');
 
     $max=23;
+    
     $list=array();
     $row=array();
     $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand
@@ -22,4 +23,5 @@
     $sectionActive = "Shop";
 
     include_once $template;
+    
 ?>
