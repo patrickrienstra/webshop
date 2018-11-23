@@ -4,13 +4,17 @@
 <div class="register-page">
     <div class="form">
         <?php
-        if(isSet($_SESSION['msg'])){
-            //Access your POST variables
-            $temp = $_SESSION['msg'];
-            echo $temp."<br/>";
-            //Unset the useless session variable
-            unset($_SESSION['msg']);
-        }?>
+        if(isset($_SESSION['registered_fail'])) {
+            ?>
+        <div>
+            Username and/or email address is already in use. Please try again.
+            <br>
+            <br>
+        </div>
+        <?php
+            unset($_SESSION['registered_fail']);
+        }
+        ?>
         <form class="register-form" action="dbregistreer.php" method="POST">
             <input type="text" name="r_username" placeholder="Username" required/>
             <input type="password" name="r_password" placeholder="Password" required/>

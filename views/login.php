@@ -3,14 +3,28 @@
 </head>
 <div class="login-page">
   <div class="form">
-	  <?php
-	  if(isSet($_SESSION['error'])){
-		  //Access your POST variables
-		  $temp = $_SESSION['error'];
-		  echo $temp."<br/>";
-		  //Unset the useless session variable
-		  unset($_SESSION['error']);
-	  }?>
+      <?php
+      if(isset($_SESSION['registered'])) {
+          ?>
+          <div>
+              Your account has succesfully been created. You can now log in.
+              <br>
+              <br>
+          </div>
+          <?php
+          unset($_SESSION['registered']);
+      }
+      if(isset($_SESSION['login_fail'])) {
+          ?>
+      <div>
+          Username and/or password invalid. Please try again.
+          <br>
+          <br>
+      </div>
+      <?php
+          unset($_SESSION['login_fail']);
+      }
+      ?>
 	<form class="login-form" action="logincheck.php" method="POST">
 	  <input type="text" name="username" placeholder="username"/>
 	  <input type="password" name="password" placeholder="password"/>
