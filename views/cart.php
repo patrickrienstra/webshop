@@ -20,9 +20,11 @@ if(!$products == ''){
                             print("<br>"); ?></h4>
                         <h4 class="pull-right"><?php echo($product['unitprice'] * $product['amount']);
                             print("<br>"); ?></h4>
-                        <form method="post" action="cart.php">
-                            <input type="text" name="qty">
-                            <input type="submit" name="submit" value="wijzigen">
+                        <form method="post" action="change.php">
+                            <input type="number" name="qty" value="<?php echo $product['amount'];?>">
+                            <input type="hidden" name="id" value="<?php echo $product['stockitemid'];?>">
+                            <input type="submit" name="wijzig" value="wijzigen">
+                            <input type="submit" name="del" value="verwijder">
                         </form>
                     </div>
                 </div>
@@ -32,6 +34,9 @@ if(!$products == ''){
         </div>
         <form method="post" action="persoonsgegevens.php">
             <button> bestellen</button>
+        </form>
+        <form method="post" action="cart.php">
+            <input type="submit" name="ec" value="Empty Cart">
         </form>
     </div>
     <?php

@@ -8,7 +8,7 @@
         }
         print("</div>");
         foreach($list as $id => $value) {
-            if($id <= $max*$page && $id > $max*($page-1)) {?>
+            if($id >= $max*($page-1) && $id <= $max*$page) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <img class="workshop" src="http://placehold.it/320x150">
