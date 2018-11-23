@@ -15,7 +15,7 @@
                 <li class="brand brand-Desktop"><h1>World Wide Importers</h1></li>
                 <li class="nav-items <?php if($sectionActive == "Home") { echo "active";} ?> "><a href="/">Home</a></li>
                 <li class="nav-items <?php if($sectionActive == "About") { echo "active";} ?> "><a href="about.php">Over ons</a></li>
-                <li class="nav-items <?php if($sectionActive == "Shop") { echo "active";} ?> "><a href="shop.php?page=1">Webshop</a></li>
+                <li class="nav-items <?php if($sectionActive == "Shop") { echo "active";} ?> "><a href="shop.php">Webshop</a></li>
                 <li class="nav-items <?php if($sectionActive == "Contact") { echo "active";}?> "><a href="contact.php">Contact</a></li>
                 <?php
                     if(!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] == false)) {

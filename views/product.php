@@ -1,3 +1,16 @@
+<?php
+
+$query="
+SELECT stockitemname, s.stockitemid, brand, size, leadtimedays, ischillerstock, taxrate, unitprice, marketingcomments, photo, customfields, colorname, quantityonhand
+FROM stockitems s
+LEFT JOIN colors c ON s.colorid = c.colorid
+JOIN stockitemholdings f ON s.stockitemid = f.stockitemid
+WHERE s.StockItemID = 199";
+
+$stmt = $db->prepare($query);
+if($stmt->execute()){
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-12 col-md-12">
@@ -12,13 +25,12 @@
                 <img class="productimg" src=<?php echo $row["photo"]; ?>>
                 <div class="caption">
                     <h4 class="pull-right"><?php echo $row["unitprice"]; ?></h4>
-                    <?php print($_SESSION['id']); ?>
                     <h4><?php echo $row["stockitemname"]; ?></h4>
                     <p><?php echo $row["brand"]; ?></p>
                     <p><?php echo $row["size"]; ?></p>
                     <p><?php echo $row["leadtimedays"]; ?></p>
                     <p><?php if($row['ischillerstock'] != 0){
-                        print("gekoeld bewaren");} ?></p>
+                        echo $row["ischillerstock"];} ?></p>
                     <p><?php echo $row["taxrate"]; ?></p>
                     <p><?php echo $row["marketingcomments"]; ?></p>
                     <p><?php echo $row["customfields"]; ?></p>
@@ -26,23 +38,13 @@
                     <p><?php if ($row['quantityonhand'] > 0){
                         echo $row["quantityonhand"];
                     }else{
-                        print('Dit product is niet op voorraad');
-                    } ?></p>
-                    <form method="post" action="inCart.php">
-                        quantity <select name="qty">
-                            <?php
-                            print($id);
-                            for($i=1; $i<=25; $i++){
-                                ?>
-                                <option name="qty" value="<?php echo $i;?>"><?php echo $i;?></option>
-                                <?php
-                            }?>
-                            <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"
-                        </select>
-                        <input type="submit" name="winkelmand" value="in winkelmand">
-                    </form>
+                        print('Dit product is niet op voorraad');} ?></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php
+    }
+}
+?>
