@@ -1,5 +1,21 @@
 .col-md-4 {
     background-color: #2c3840;
+    padding: 1%;
+}
+.thumbnail {
+    height: 250px;
+    margin-top: 4px;
+}
+.pagenumber {
+    width:50px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 5px;
+    
+}
+
+.choosepage {
+    padding-left: 5px;
 }
 
 .col-md-4 p {

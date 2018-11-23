@@ -3,10 +3,27 @@
 require_once "inc/package.inc.php";
 require('inc/config.php');
 
-$view = "views/product.php";
-$sectionActive = "product";
+$id=filter_input(INPUT_GET, 'id',FILTER_SANITIZE_NUMBER_INT);
+$_SESSION['id'] = $id;
+print($_SESSION['id']);
+$winkelmand= array();
 
-include_once $template;
+$query="
+SELECT stockitemname, s.stockitemid, brand, size, leadtimedays, ischillerstock, taxrate, unitprice, marketingcomments, photo, customfields, colorname, quantityonhand
+FROM stockitems s
+LEFT JOIN colors c ON s.colorid = c.colorid
+JOIN stockitemholdings f ON s.stockitemid = f.stockitemid
+WHERE s.StockItemID = :id";
+
+$stmt = $db->prepare($query);
+$stmt->bindValue(':id',$id,PDO::PARAM_INT);
+if($stmt->execute()) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $view = "views/product.php";
+        $sectionActive = "product";
+        include_once $template;
+    }
+}
 
 
 ?>
