@@ -5,7 +5,6 @@ require('inc/config.php');
 
 $id=filter_input(INPUT_GET, 'id',FILTER_SANITIZE_NUMBER_INT);
 $_SESSION['id'] = $id;
-print($_SESSION['id']);
 $winkelmand= array();
 
 $query="
@@ -18,12 +17,10 @@ WHERE s.StockItemID = :id";
 $stmt = $db->prepare($query);
 $stmt->bindValue(':id',$id,PDO::PARAM_INT);
 if($stmt->execute()) {
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $view = "views/product.php";
-        $sectionActive = "product";
-        include_once $template;
-    }
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }
-
+$view = "views/product.php";
+$sectionActive = "product";
+require_once $template;
 
 ?>
