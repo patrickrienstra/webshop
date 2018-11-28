@@ -5,5 +5,5 @@
     $view = "views/about.php";
     $sectionActive = "About";
 
-    require_once $template;
+    include_once $template;
 ?>

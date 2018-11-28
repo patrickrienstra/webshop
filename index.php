@@ -5,5 +5,5 @@
     $view = "views/index.php";
     $sectionActive = "Home";
 
-    require_once $template;
+    include_once $template;
 ?>

@@ -1,9 +1,9 @@
 <?php
-require_once "inc/package.inc.php";
-require_once ('inc/config.php');
+    require_once "inc/package.inc.php";
+    require('inc/config.php');
 
-$view = "views/login.php";
-$sectionActive = "login";
+    $view = "views/login.php";
+    $sectionActive = "login";
 
-include_once $template;
+    include_once $template;
 ?>
