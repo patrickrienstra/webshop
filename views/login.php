@@ -1,9 +1,19 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/login.scss"/>
 </head>
 <div class="login-page">
   <div class="form">
       <?php
+      if(isset($_SESSION['empty_field'])) {
+          ?>
+          <div>
+              Username and/or password can't be empty
+              <br>
+              <br>
+          </div>
+          <?php
+          unset($_SESSION['msg']);
+      }
       if(isset($_SESSION['registered'])) {
           ?>
           <div>
