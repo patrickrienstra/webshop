@@ -5,7 +5,7 @@
 <div class="container">
 	<img class="logo" src="http://www.surroundtech.com/media/a8/ae2e/a8ae2eb1fefdbf650518e8a689f41956/wide-world-importers-logo-small.png" alt="Logo">
 	<h1>Contact</h1>
-	<p>Naam: World Wide Importers</p>
+	<p>Naam: Wide World Importers</p>
 	<p>Adress: Campus 2</p>
 	<p>Postcode: 8017 CA</p>
 	<p>Plaats: Zwolle</p>

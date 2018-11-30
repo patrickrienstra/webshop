@@ -9,13 +9,16 @@ if(isset($_POST['login'])) {
     $key=hash('sha256', $username.$password);
     if (empty($username) || empty($password)) {
         $message = "Username and/or password can't be empty";
+        $_SESSION['empty field'] = true;
+        header('location: login.php');
     } else {
-        $query = "SELECT LogonName, PersonID FROM people WHERE LogonName=? AND HashedPassword=? AND IsPermittedToLogon = 1";
+        $query = "SELECT CustomerID FROM webcustomer WHERE Username=? AND HashedPassword=?";
         $stmt = $db->prepare($query);
         $stmt->execute(array($username, $key));
 
         if ($stmt->rowCount() == 1) {
             $_SESSION['user'] = $username;
+            $_SESSION['CustomerID']=$stmt->fetch(PDO::FETCH_ASSOC);
             $_SESSION['logged_in'] = true;
             $message = "Login succesful";
             if(isset($_POST['location']) && $_POST['location']== 'persoonsgegevens'){

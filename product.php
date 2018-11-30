@@ -20,7 +20,7 @@ if($stmt->execute()) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 $view = "views/product.php";
-$sectionActive = "product";
+$sectionActive = "Shop";
 require_once $template;
 
 ?>

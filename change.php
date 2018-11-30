@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/config.php';
-$key = '';
 $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 $cart = $_SESSION['cart'];
 if(isset($_POST['wijzig'])) {
