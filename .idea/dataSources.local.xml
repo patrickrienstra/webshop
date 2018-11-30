@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="wideworldimporters@localhost" uuid="15e41723-7146-4571-bbe2-d56f86f48009">
+    <data-source name="wideworldimporters@localhost" uuid="d9223cae-a0c2-468b-9cc4-8a6765af4885">
       <database-info product="MySQL" version="10.1.35-MariaDB" jdbc-version="4.2" driver-name="MariaDB connector/J" driver-version="2.2.1" family="MARIADB" exact-version="10.1.35">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>

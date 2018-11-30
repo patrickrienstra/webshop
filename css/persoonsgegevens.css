@@ -1,0 +1,13 @@
+.loginpageformleft {
+    float: left;
+    width: 25%;
+    margin-left: 25%;
+    margin-top: 12.5%;
+}
+
+.loginpageformright {
+    float: right;
+    width: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+}

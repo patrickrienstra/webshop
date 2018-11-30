@@ -36,8 +36,8 @@
       }
       ?>
 	<form class="login-form" action="logincheck.php" method="POST">
-	  <input type="text" name="username" placeholder="username"/>
-	  <input type="password" name="password" placeholder="password"/>
+	  <input type="text" name="username" placeholder="Username"/>
+	  <input type="password" name="password" placeholder="Password"/>
 	  <input type="submit" name="login" value="Login" class="login-submit">
         <a href="registreer.php">Nog geen account? Registreer hier!</a>
 	</form>
