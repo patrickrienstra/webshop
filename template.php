@@ -11,17 +11,17 @@
         <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" type="text/css" href="css/persoonsgegevens.css">
         <link rel="stylesheet" href="css/cart.css">
+        <link rel="stylesheet" href="css/template.css">
         <title><?php echo $sectionActive ?></title>
     </head>
     <body>
-        <nav>
-            <ul>
+        <nav class="header">
+            <ul class="ul">
                 <li class="brand brand-Desktop"><h1>Wide World Importers</h1></li>
                 <li class="nav-items <?php if($sectionActive == "Home") { echo "active";} ?> "><a href="index.php">Home</a></li>
                 <li class="nav-items <?php if($sectionActive == "About") { echo "active";} ?> "><a href="about.php">Over ons</a></li>
                 <li class="nav-items <?php if($sectionActive == "Shop") { echo "active";} ?> "><a href="shop.php?page=1">Webshop</a></li>
                 <li class="nav-items <?php if($sectionActive == "Contact") { echo "active";}?> "><a href="contact.php">Contact</a></li>
-<!--                <li class="nav-items --><?php //if($sectionActive == "Cart") { echo "active";}?><!-- "><a href="cart.php">Cart</a></li>-->
                 <?php
                     if(!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] == false)) {
                         ?><li class="nav-items <?php if($sectionActive == "Login") { echo "active";}?> "><a href="login.php">Login</a></li><?php

@@ -14,11 +14,12 @@ if(isset($_POST['login'])) {
     } else {
         $query = "SELECT CustomerID FROM webcustomer WHERE Username=? AND HashedPassword=?";
         $stmt = $db->prepare($query);
-        $stmt->execute(array($username, $key));
+        if($stmt->execute(array($username, $key))){
 
         if ($stmt->rowCount() == 1) {
             $_SESSION['user'] = $username;
-            $_SESSION['CustomerID']=$stmt->fetch(PDO::FETCH_ASSOC);
+            $id=$stmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['CustomerID']=$id['CustomerID'];
             $_SESSION['logged_in'] = true;
             $message = "Login succesful";
             if(isset($_POST['location']) && $_POST['location']== 'persoonsgegevens'){
@@ -29,10 +30,11 @@ if(isset($_POST['login'])) {
         }
         else {
             $_SESSION['login_fail'] = true;
-            if(isset($_POST['location']) && $_POST['location'] == 'persoonsgegevens'){
+            if (isset($_POST['location']) && $_POST['location'] == 'persoonsgegevens') {
                 header('location: persoonsgegevens.php');
-            }else{
-            header('location: login.php');
+            } else {
+                header('location: login.php');
+            }
         }
     }
     }

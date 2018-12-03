@@ -32,12 +32,6 @@ if(!$products == ''){
             }
             ?>
         </div>
-        <form method="post" action="persoonsgegevens.php">
-            <button>Bestellen</button>
-        </form>
-        <form method="post" action="cart.php">
-            <input type="submit" name="ec" value="Empty Cart">
-        </form>
     </div>
     <?php
 }else{

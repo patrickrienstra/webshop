@@ -26,7 +26,8 @@
                                 <?php
                             }?>
                         <input type="hidden" name="id" value="<?php echo $value['stockitemid'];?>">
-                        <input type="submit" name="shop" value="in winkelmand" class="btn btn-add     ">
+                            <input type="hidden" name="page"  value="<?php echo $page ?>">
+                        <input type="submit" name="shop" value="in winkelmand" class="btn btn-add">
                     </form>
                 </div>
             </div>
