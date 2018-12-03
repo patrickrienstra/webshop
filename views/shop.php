@@ -11,7 +11,13 @@
             if($id >= $_SESSION['max']*($page-1) && $id < $_SESSION['max']*$page) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
+                    <?php if($value['StockItemPhoto']=='') {?>
                     <img class="workshop" src="http://placehold.it/320x150">
+                    <?php
+                    }else{
+                        ?>
+                    <img src="<?php echo $value['StockItemPhoto'];?>">
+                    <?php } ?>
                     <div class="caption">
                         <h4 class="pull-right"><?php echo '$ '.$value['unitprice']; ?></h4>
                         <h4><a href="product.php?id=<?php echo $value['stockitemid']; ?>"><?php echo $value['stockitemname']; ?></a></h4>

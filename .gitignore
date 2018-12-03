@@ -4,3 +4,8 @@
 .idea/vcs.xml
 .idea/webshop.iml
 .idea/workspace.xml
+*.xml
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
