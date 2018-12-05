@@ -9,6 +9,7 @@
     $list=array();
     $row=array();
     if(isset($_POST['categorie'])){
+        $category=filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
         $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE LIKE '%:category%'";
         $query_prepare = $db->prepare($query);
         $query_prepare->bindValue(':category', $category);
