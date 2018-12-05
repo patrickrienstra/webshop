@@ -64,15 +64,17 @@ if(!$products == ''){
                 <input type="text" value="<?php print('$ '.$subtotaal);?>" class="center" disabled>
             </form>
             <form method="post" action="persoonsgegevens.php">
-                <?php if($products == ""){?>
+                <?php if(!isset($_SESSION['cart'])){?>
                     <input type="submit" class="btn btn-add" value="Bestellen" disabled>
                 <?php }else{?>
                     <input type="submit" class="btn btn-add" value="Bestellen">
-                <?php } ?>
-            </form>
+                <?php }
+                if(isset($_SESSION['cart'])){
+                    ?>
             <form method="post" action="cart.php">
                 <input type="submit" class="btn btn-danger" name="ec" value="Empty Cart">
             </form>
+                <?php } ?>
         </div>
     </div>
 </aside>
