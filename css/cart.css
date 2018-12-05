@@ -1,0 +1,32 @@
+.cartcontainer {
+    width: 55%;
+    margin-top: 105px;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.24);
+}
+
+.cart-total {
+    width: 360px;
+    margin: auto;
+    display: block;
+    position: fixed;
+    z-index: 10;
+    float: right;
+    top: 100px;
+    right: 10px;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+.center{
+    text-align: center;
+}
+.cart-img{
+    height: 60px;
+    position: fixed;
+    z-index: 200;
+    top: 10px;
+    right: 5px;
+}

@@ -1,9 +1,19 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/login.scss"/>
 </head>
 <div class="login-page">
   <div class="form">
       <?php
+      if(isset($_SESSION['empty_field'])) {
+          ?>
+          <div>
+              Username and/or password can't be empty
+              <br>
+              <br>
+          </div>
+          <?php
+          unset($_SESSION['msg']);
+      }
       if(isset($_SESSION['registered'])) {
           ?>
           <div>
@@ -26,8 +36,8 @@
       }
       ?>
 	<form class="login-form" action="logincheck.php" method="POST">
-	  <input type="text" name="username" placeholder="username"/>
-	  <input type="password" name="password" placeholder="password"/>
+	  <input type="text" name="username" placeholder="Username"/>
+	  <input type="password" name="password" placeholder="Password"/>
 	  <input type="submit" name="login" value="Login" class="login-submit">
         <a href="registreer.php">Nog geen account? Registreer hier!</a>
 	</form>

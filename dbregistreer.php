@@ -3,7 +3,6 @@ require_once'inc/config.php';
 
 if(isset($_POST['register'])) {
     // variables
-    $id = '';
     $name = filter_input(INPUT_POST, 'r_name', FILTER_SANITIZE_STRING);
     $surname = filter_input(INPUT_POST, 'r_surname', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'r_username', FILTER_SANITIZE_STRING);
@@ -18,40 +17,32 @@ if(isset($_POST['register'])) {
     $key = hash('sha256', $username . $password);
 
     //query 1
-    $query = "SELECT * FROM people WHERE EmailAddress = :email OR LogonName = :username";
+    $query = "SELECT * FROM webcustomer WHERE Email = :email OR username = :username";
     $stmt = $db->prepare($query);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':username', $username);
 
     //query 2
-    $query2 = "SELECT MAX(PersonID) FROM people";
+    $query2 = "INSERT INTO webcustomer(Username, HashedPassword, Fullname, PhoneNumber, Email, City, Address, ZipCode) VALUES(:username, :password, :fullname, :phone, :email, :city, :address, :zipcode)";
     $stmt2 = $db->prepare($query2);
-    if ($stmt2->execute()) {
-        $personId = $stmt2->fetch(PDO::FETCH_ASSOC);
-        foreach ($personId as $person) {
-            $id = $person;
-            $id++;
-        }
+    $stmt2->bindValue(':password', $key);
+    $stmt2->bindValue(':fullname', $fullname);
+    $stmt2->bindValue(':phone', $phone);
+    $stmt2->bindValue(':email', $email);
+    $stmt2->bindValue(':username', $username);
+    $stmt2->bindValue(':city', $city);
+    $stmt2->bindValue(':address', $address);
+    $stmt2->bindValue(':zipcode', $zipcode);
 
-        //query 3
-        $query3 = "INSERT INTO people(PersonID, LogonName, HashedPassword, Fullname, PhoneNumber, EmailAddress, IsPermittedToLogon) VALUES(:id, :username, :password, :fullname, :phone, :email, 1)";
-        $stmt3 = $db->prepare($query3);
-        $stmt3->bindValue(':password', $key);
-        $stmt3->bindValue(':fullname', $fullname);
-        $stmt3->bindValue(':phone', $phone);
-        $stmt3->bindValue(':email', $email);
-        $stmt3->bindValue(':username', $username);
-        $stmt3->bindValue(':id', $id);
-
+    if($password == $passwordcheck){
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
                 $_SESSION['registered_fail'] = true;
                 header('location: registreer.php');
-            }elseif($stmt3->execute()) {
-                    $_SESSION['registered'] = true;
-                    header('location: login.php');
+            } elseif ($stmt2->execute()) {
+                $_SESSION['registered'] = true;
+                header('location: login.php');
             }
         }
     }
 }
-//while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {}

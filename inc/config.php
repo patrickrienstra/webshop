@@ -9,8 +9,8 @@
     // //database credentials
     define('DBHOST','localhost');
     define('DBNAME','wideworldimporters');
-    define('DBUSER','root');
-    define('DBPASS','');
+    define('DBUSER','webuser');
+    define('DBPASS','zPlv47aZ6N2bAyJL');
 
     $db = new PDO("mysql:host=".DBHOST.";dbname=".DBNAME, DBUSER, DBPASS);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
