@@ -33,6 +33,7 @@ if(isset($_POST['product'])){
 
 if(isset($_POST['shop'])){
     $id=filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+    $page=filter_input(INPUT_POST, 'page', FILTER_SANITIZE_NUMBER_INT);
     $qty=filter_input(INPUT_POST, 'qty', FILTER_SANITIZE_NUMBER_INT);
     $product['id']=$id;
     $product['qty']=$qty;
@@ -42,5 +43,5 @@ if(isset($_POST['shop'])){
     $_SESSION['cart']=$cart;
     print_r($_SESSION['cart']);
     echo '<br>';
-    header('location: shop.php?page=' . $_SESSION['page']);
+    header('location: shop.php?page=' . $page);
 }
