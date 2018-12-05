@@ -39,7 +39,7 @@ if(!$products == ''){
     <div class="container cartcontainer">
         <div class="row">
             <div class="center">
-                <p><?php print('winkelwagen is leeg'); ?></p>
+                <p><?php print('Winkelwagen is leeg'); ?></p>
             </div>
         </div>
     </div>

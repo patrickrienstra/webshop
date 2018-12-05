@@ -11,6 +11,7 @@
     if(isset($_POST['categorie'])){
         $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE LIKE '%:category%'";
         $query_prepare = $db->prepare($query);
+        $query_prepare->bindValue(':category', $category);
         if ($query_prepare->execute()) {
             $rowcount = $query_prepare->rowCount();
             $paginas = $rowcount / $_SESSION['max'];

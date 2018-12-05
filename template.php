@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/persoonsgegevens.css">
         <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="css/shop.css">
         <title><?php echo $sectionActive ?></title>
     </head>
     <body>
