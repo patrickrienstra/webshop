@@ -1,6 +1,11 @@
 <?php
     require_once "inc/package.inc.php";
     require('inc/config.php');
+
+    if(isset($e)){
+    header('location: error.php');
+}
+
     $list= array();
     $date=date('Y-m-d');
     $query = "SELECT s.stockitemid, s.stockitemname, s.StockItemPhoto

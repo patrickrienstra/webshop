@@ -8,30 +8,50 @@
 
     $list=array();
     $row=array();
-    if(isset($_POST['categorie'])){
-        $category=filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
-        $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE LIKE '%:category%'";
-        $query_prepare = $db->prepare($query);
-        $query_prepare->bindValue(':category', $category);
-        if ($query_prepare->execute()) {
-            $rowcount = $query_prepare->rowCount();
-            $paginas = $rowcount / $_SESSION['max'];
-            while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
-                $list[] = $row;
+    echo '<br>';
+    if(isset($db)) {
+        if (isset($_GET['search'])) {
+            $data = filter_input(INPUT_GET, 'value', FILTER_SANITIZE_STRING);
+            $searchdata = '%' . $data . '%';
+
+            $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE StockItemName LIKE :searchdata OR CustomFields LIKE :searchdata";
+            $query_prepare = $db->prepare($query);
+            $query_prepare->bindValue(':searchdata', $searchdata);
+            if ($query_prepare->execute()) {
+                $rowcount = $query_prepare->rowCount();
+                $paginas = $rowcount / $_SESSION['max'];
+                while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
+                    $list[] = $row;
+                }
             }
-        }
-    }else{
-        $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid";
-        $query_prepare = $db->prepare($query);
-        if($query_prepare->execute()) {
-            $rowcount = $query_prepare->rowCount();
-            $paginas = $rowcount / $_SESSION['max'];
-            while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
-                $list[] = $row;
+        } elseif (isset($_POST['categorie'])) {
+            $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
+            $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE LIKE '%:category%'";
+            $query_prepare = $db->prepare($query);
+            $query_prepare->bindValue(':category', $category);
+            if ($query_prepare->execute()) {
+                $rowcount = $query_prepare->rowCount();
+                $paginas = $rowcount / $_SESSION['max'];
+                while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
+                    $list[] = $row;
+                }
+            }
+        } else {
+            $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid";
+            $query_prepare = $db->prepare($query);
+            if ($query_prepare->execute()) {
+                $rowcount = $query_prepare->rowCount();
+                $paginas = $rowcount / $_SESSION['max'];
+                while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
+                    $list[] = $row;
+                }
             }
         }
     }
-    $paginas = round($paginas, 0, PHP_ROUND_HALF_UP);
+
+    if(isset($paginas)) {
+        $paginas = round($paginas, 0, PHP_ROUND_HALF_UP);
+    }
     $view = "views/shop.php";
     $sectionActive = "Shop";
 
