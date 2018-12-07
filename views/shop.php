@@ -1,6 +1,10 @@
 <div class="row">
     <div class="col-lg-3">
         <div class="list-group">
+            <form action="shop.php" method="get">
+                <input type="text" name="value" placeholder="zoeken">
+                <input type="submit" name="search" value="zoeken">
+            </form>
             <a href="?category=Novelty" name="novelty" class="list-group-item">Novelty Items</a>
             <a href="?category=Clothing" name="clothing" class="list-group-item">Clothing</a>
             <a href="?category=Mugs" name="mugs" class="list-group-item">Mugs</a>
@@ -17,17 +21,23 @@
 <div class="container">
     <div class="row">
         <?php
-        $page = $_GET['page'];
+        if(isset($paginas)){
+        if(isset($_GET['page'])) {
+            $page = $_GET['page'];
+        }else{
+            $page = 1;
+        }
         print('<div class="pagenumber">');
         for($i = 1; $i <= $paginas; $i++) {
             echo "<a href='?page=" . $i . "' class='choosepage'>" . $i . "</a>";
+        }
         }
         print("</div>");
         foreach($list as $id => $value) {
             if($id >= $_SESSION['max']*($page-1) && $id < $_SESSION['max']*$page) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <?php if($value['StockItemPhoto']=='') {?>
+                    <?php if(!isset($value['StockItemPhoto'])) {?>
                     <img class="workshop" src="http://placehold.it/320x150">
                     <?php
                     }else{
@@ -56,16 +66,6 @@
             <?php
             }
         }
-        if(isset($error)){
-            ?>
-        <div>
-            <p> Deze pagina is op dit moment niet beschikbaar.</p>
-            <p> Neem contact op met de service desk.</p>
-            <p> Code: <?php echo $error; ?></p>
-        </div>
-        <?php
-        }
-            ?>
-
+        ?>
     </div>
 </div>
