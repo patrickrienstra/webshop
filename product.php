@@ -8,7 +8,7 @@ $_SESSION['id'] = $id;
 $winkelmand= array();
 
 $query="
-SELECT stockitemname, s.stockitemid, brand, size, leadtimedays, ischillerstock, taxrate, unitprice, marketingcomments, photo, customfields, colorname, quantityonhand
+SELECT stockitemname, s.stockitemid, brand, size, leadtimedays, ischillerstock, taxrate, unitprice, marketingcomments, stockitemphoto, customfields, colorname, quantityonhand
 FROM stockitems s
 LEFT JOIN colors c ON s.colorid = c.colorid
 JOIN stockitemholdings f ON s.stockitemid = f.stockitemid

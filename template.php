@@ -21,7 +21,7 @@
             if(!isset($e)) {
                 ?>
                 <ul class="ul">
-                    <li class="brand brand-Desktop"><h1>Wide World Importers</h1></li>
+                    <li class="brand brand-Desktop"><h1 class="h1">Wide World Importers</h1></li>
                     <li class="nav-items <?php if ($sectionActive == "Home") {
                         echo "active";
                     } ?> "><a href="index.php">Home</a></li>

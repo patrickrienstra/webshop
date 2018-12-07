@@ -46,7 +46,6 @@
         <form method="post" action="payment.php">
             <input type="radio" name="methode" value="1" required> Vooraf(Ideal)<br>
             <input type="radio" name="methode" value="2" required> Paypal<br>
-            <input type="radio" name="methode" value="3" required> Achteraf(Ideal)<br>
             <input class="btn btn-add" type="submit" name="betaal" value="betalen">
         </form>
     </div>
