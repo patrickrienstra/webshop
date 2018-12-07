@@ -28,7 +28,7 @@ if(isset($_SESSION['cart'])) {
         }
     }
 
-    if (!isset($_SESSION['naw'])) {
+    if (isset($_SESSION['naw'])) {
         $naw = $_SESSION['naw'];
 
 

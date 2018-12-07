@@ -23,15 +23,19 @@
     <div class="row">
         <?php
         if(isset($paginas)){
-        if(isset($_GET['page'])) {
-            $page = $_GET['page'];
-        }else{
-            $page = 1;
-        }
+            if(isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }else{
+                $page = 1;
+            }
         print('<div class="pagenumber">');
         for($i = 1; $i <= $paginas; $i++) {
-            echo "<a href='?page=" . $i . "' class='choosepage'>" . $i . "</a>";
-        }
+            if (!ISSET($_GET['category'])) {
+                echo "<a href='?page=" . $i . "' class='choosepage'>" . $i . "</a>";
+            } else {
+                echo "<a href='?category=".$_GET['category']."&page=" . $i . "' class='choosepage'>" . $i . "</a>";
+            }
+            }
         }
         print("</div>");
         foreach($list as $id => $value) {

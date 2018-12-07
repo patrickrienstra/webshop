@@ -18,7 +18,7 @@
     <body>
         <nav class="header">
             <?php
-            if(!isset($_SESSION['e'])) {
+            if(!isset($e)) {
                 ?>
                 <ul class="ul">
                     <li class="brand brand-Desktop"><h1>Wide World Importers</h1></li>
@@ -63,11 +63,11 @@
             ?>
         </nav>
         <?php
-        if(isset($_SESSION['e']) && !$_GET['error']) {
+        if(isset($e) && !$_GET['error']) {
             header('location: error.php?error=1');
         }
         include $view;
-        if(!isset($_SESSION['e'])) {
+        if(!isset($e)) {
             include("inc/footer.php");
         }
         ?>

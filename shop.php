@@ -12,7 +12,6 @@
         if (isset($_GET['search'])) {
             $data = filter_input(INPUT_GET, 'value', FILTER_SANITIZE_STRING);
             $searchdata = '%' . $data . '%';
-
             $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE StockItemName LIKE :searchdata OR CustomFields LIKE :searchdata";
             $query_prepare = $db->prepare($query);
             $query_prepare->bindValue(':searchdata', $searchdata);
@@ -23,9 +22,9 @@
                     $list[] = $row;
                 }
             }
-        } elseif (isset($_POST['categorie'])) {
-            $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
-            $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE LIKE '%:category%'";
+        } elseif (isset($_GET['category'])) {
+            $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
+            $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE s.StockItemID IN (SELECT StockItemID  FROM stockitemstockgroups WHERE StockGroupID IN( SELECT StockGroupID FROM stockgroups WHERE StockGroupName =  :category))";
             $query_prepare = $db->prepare($query);
             $query_prepare->bindValue(':category', $category);
             if ($query_prepare->execute()) {
