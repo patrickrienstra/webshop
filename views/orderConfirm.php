@@ -26,6 +26,9 @@
     <div class="form">
         <div class="login-form">
         <?php
+        $subtotaal = number_format((float)$subtotaal, 2, '.', '');
+        $taxamount = number_format((float)$taxamount, 2, '.', '');
+        $totaal = number_format((float)$totaal, 2, '.', '');
         echo 'Sub Totaal: ';
         echo '$ '.$subtotaal;
         echo '<br>';

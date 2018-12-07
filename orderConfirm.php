@@ -39,17 +39,17 @@ if(isset($_SESSION['cart'])) {
 }
 
 foreach($products as $product) {
-    if(isset($subtotaal)){
+    if(!isset($subtotaal)){
         $subtotaal = $product['unitprice']*$product['amount'];
     } else {
         $subtotaal += $product['unitprice'] * $product['amount'];
     }
-    if(isset($taxamount)){
+    if(!isset($taxamount)){
         $taxamount = $product['unitprice']*$product['amount']*($product['taxrate']/100);
     }else{
         $taxamount += $product['unitprice']*$product['amount']*($product['taxrate']/100);
     }
-    if(isset($totaal)){
+    if(!isset($totaal)){
         $totaal = $product['unitprice']*$product['amount']*($product['taxrate']/100+1);
     }else{
         $totaal += $product['unitprice']*$product['amount']*($product['taxrate']/100+1);

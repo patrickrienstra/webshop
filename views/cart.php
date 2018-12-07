@@ -20,12 +20,25 @@ if($products != ''){
                     <tbody>
                         <?php
                         foreach($products as $product){
-                            $subtotaal= $subtotaal +(($product['unitprice']*$product['amount']));
+                            if(!isset($subtotaal)){
+                                $subtotaal = $product['unitprice']*$product['amount'];
+                            } else {
+                                $subtotaal += $product['unitprice'] * $product['amount'];
+                            }
+                            if(!isset($taxamount)){
+                                $taxamount = $product['unitprice']*$product['amount']*($product['taxrate']/100);
+                            }else{
+                                $taxamount += $product['unitprice']*$product['amount']*($product['taxrate']/100);
+                            }
+                            if(!isset($totaal)){
+                                $totaal = $product['unitprice']*$product['amount']*($product['taxrate']/100+1);
+                            }else{
+                                $totaal += $product['unitprice']*$product['amount']*($product['taxrate']/100+1);
+                            }
+                            $subtotaal = number_format((float)$subtotaal, 2, '.', '');
+                            $taxamount = number_format((float)$taxamount, 2, '.', '');
+                            $totaal = number_format((float)$totaal, 2, '.', '');
                         }
-                        foreach($products as $product){
-                            $tototaal= $totaal +(($product['unitprice']*$product['amount'])*(1+($product['taxrate'])/100));
-                        }
-                        $btwBedrag = $tototaal-$subtotaal;
                         foreach ($products as $product) { ?>
                                     <tr>
                                         <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
@@ -57,7 +70,7 @@ if($products != ''){
                             <td></td>
                             <td></td>
                             <td><strong>BTW</strong></td>
-                            <td class="text-right"><strong><?php echo "$" . $btwBedrag;?></strong></td>
+                            <td class="text-right"><strong><?php echo "$" . $taxamount;?></strong></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -66,7 +79,7 @@ if($products != ''){
                             <td></td>
                             <td></td>
                             <td><strong>Totaal</strong></td>
-                            <td class="text-right"><strong><?php echo "$" . $tototaal;?></strong></td>
+                            <td class="text-right"><strong><?php echo "$" . $totaal;?></strong></td>
                             <td></td>
                         </tr>
                     </tbody>
