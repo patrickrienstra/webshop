@@ -26,7 +26,6 @@
         $query_prepare = $db->prepare($query);
         if($query_prepare->execute()) {
             $rowcount = $query_prepare->rowCount();
-            print_r($rowcount);
             $paginas = $rowcount / $_SESSION['max'];
             while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
                 $list[] = $row;

@@ -4,9 +4,9 @@
 <div class="row"><center>
     <div class="col-lg-3">
         <div class="list-group">
-            <a href="/webshop/accountdetails.php" name="shipping" class="list-group-item">Shipping Information</a>
-            <a href="/webshop/wijzigingwachtwoord.php" name="changepassword" class="list-group-item">Change Password</a>
-            <a href="/webshop/myorders.php" name="orders" class="list-group-item">My Orders</a>
+            <a href="/webshop/accountdetails.php" name="shipping" class="list-group-item">Persoonlijke Informatie</a>
+            <a href="/webshop/wijzigingwachtwoord.php" name="changepassword" class="list-group-item">Wachtwoord Veranderen</a>
+            <a href="/webshop/myorders.php" name="orders" class="list-group-item">Mijn Bestellingen</a>
         </div>
     </div>
 </div></center>
