@@ -28,16 +28,31 @@
             }else{
                 $page = 1;
             }
-        print('<div class="pagenumber">');
-        for($i = 1; $i <= $paginas; $i++) {
+        $pagep = $page-1;
+        $pagen = $page+1;
+        print('<div><ul class="pagination">');
             if (!ISSET($_GET['category'])) {
-                echo "<a href='?page=" . $i . "' class='choosepage'>" . $i . "</a>";
+               echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+               for($i = 1; $i <= $paginas; $i++) {
+                  if($page == $i) {
+                      echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
+                  } else {
+                      echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
+                  }
             } else {
-                echo "<a href='?category=".$_GET['category']."&page=" . $i . "' class='choosepage'>" . $i . "</a>";
-            }
+                 echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+                 for($i = 1; $i <= $paginas; $i++) {
+                     if($page == $i) {
+                         echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
+                     } else {
+                        echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
+                        echo "<a href='?category=".$_GET['category']."&page=" . $i . "' class='choosepage'>" . $i . "</a>";
+                     }
+              }
             }
         }
-        print("</div>");
+        echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
+        print("</ul></div>");
         foreach($list as $id => $value) {
             if($id >= $_SESSION['max']*($page-1) && $id < $_SESSION['max']*$page) {?>
             <div class="col-sm-4 col-lg-4 col-md-4">
@@ -71,6 +86,26 @@
             <?php
             }
         }
-        ?>
+        print('<div><ul class="pagination">');
+        echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+        for($i = 1; $i <= $paginas; $i++) {
+            if($page == $i) {
+                echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
+            } else {
+                echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
+            }
+        }
+        echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
+        print("</ul></div>");
+        if(isset($error)){
+            ?>
+        <div>
+            <p> Deze pagina is op dit moment niet beschikbaar.</p>
+            <p> Neem contact op met de service desk.</p>
+            <p> Code: <?php echo $error; ?></p>
+        </div>
+        <?php
+        }
+            ?>
     </div>
 </div>
