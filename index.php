@@ -14,7 +14,7 @@
     JOIN web_invoices w ON w.invoiceid = f.invoiceid
     WHERE invoicedate=:date
     GROUP BY s.stockitemid
-    HAVING COUNT(*) > 20";
+    HAVING SUM(quantity) >= 20";
     $query_prepare  = $db->prepare($query);
     $query_prepare->bindValue(':date', $date);
     if($query_prepare->execute()) {

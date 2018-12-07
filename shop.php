@@ -5,7 +5,6 @@
 
     $_SESSION['max'] = 24;
 
-
     $list=array();
     $row=array();
     echo '<br>';

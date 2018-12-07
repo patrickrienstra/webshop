@@ -1,23 +1,24 @@
-<div class="row">
+<div class="row"><center>
     <div class="col-lg-3">
         <div class="list-group">
-            <form action="shop.php" method="get">
+              <form action="shop.php" method="get">
                 <input type="text" name="value" placeholder="zoeken">
                 <input type="submit" name="search" value="zoeken">
             </form>
-            <a href="?category=Novelty" name="novelty" class="list-group-item">Novelty Items</a>
-            <a href="?category=Clothing" name="clothing" class="list-group-item">Clothing</a>
-            <a href="?category=Mugs" name="mugs" class="list-group-item">Mugs</a>
-            <a href="?category=Tshirts" name="tshirts" class="list-group-item">T-Shirts</a>
-            <a href="?category=Airline" name="airline" class="list-group-item">Airline Novelties</a>
-            <a href="?category=Computing" name="computing" class="list-group-item">Computing Novelties</a>
-            <a href="?category=USB" name="usb" class="list-group-item">USB Novelties</a>
-            <a href="?category=Furry" name="furry" class="list-group-item">Furry Footwear</a>
-            <a href="?category=Toys" name="toys" class="list-group-item">Toys</a>
-            <a href="?category=Packaging" name="packaging" class="list-group-item">Packaging Materials</a>
+            <a href="?category=Novelty%20Items&page=1" name="novelty" class="list-group-item">Novelty Items</a>
+            <a href="?category=Clothing&page=1" name="clothing" class="list-group-item">Clothing</a>
+            <a href="?category=Mugs&page=1" name="mugs" class="list-group-item">Mugs</a>
+            <a href="?category=T-shirts&page=1" name="tshirts" class="list-group-item">T-Shirts</a>
+            <a href="?category=Airline%20Novelties&page=1" name="airline" class="list-group-item">Airline Novelties</a>
+            <a href="?category=Computing%20Novelties&page=1" name="computing" class="list-group-item">Computing Novelties</a>
+            <a href="?category=USB%20Novelties&page=1" name="usb" class="list-group-item">USB Novelties</a>
+            <a href="?category=Furry%20Footwear&page=1" name="furry" class="list-group-item">Furry Footwear</a>
+            <a href="?category=Toys&page=1" name="toys" class="list-group-item">Toys</a>
+            <a href="?category=Packaging%20Materials&page=1" name="packaging" class="list-group-item">Packaging Materials</a>
+            <a href="?category=&page=1" name="clear" class="list-group-item">Verwijder Filter</a>
         </div>
     </div>
-</div>
+</div></center>
 <div class="container">
     <div class="row">
         <?php
