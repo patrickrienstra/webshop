@@ -11,7 +11,7 @@
                 ?>
                 <img class="productimg" src=<?php echo $row["photo"]; ?>>
                 <div class="caption">
-                    <h4 class="pull-right"><?php echo '$ '.$row["unitprice"]; ?></h4>
+                    <h4 class="pull-right"><?php echo '€ '.$row["unitprice"]*0.88; ?></h4>
                     <h4><?php echo $row["stockitemname"]; ?></h4>
                     <p><?php echo $row["brand"]; ?></p>
                     <p><?php echo $row["size"]; ?></p>
