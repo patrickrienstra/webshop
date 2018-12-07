@@ -4,7 +4,6 @@
     require('inc/config.php');
 
     $_SESSION['max'] = 24;
-    echo '<br>';
 
     $list=array();
     $row=array();
