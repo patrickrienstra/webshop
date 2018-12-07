@@ -11,13 +11,11 @@
     $category='';
     if(isset($_GET['category']) && $_GET['category']!=''){
         $category= filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
-        echo $category;
         $query = "SELECT s.stockitemid, s.stockitemname, s.brand, s.unitprice, s.photo, f.quantityonhand FROM stockitems s JOIN stockitemholdings f ON s.stockitemid = f.stockitemid WHERE s.StockItemID IN (SELECT StockItemID FROM stockitemstockgroups WHERE StockGroupID = (SELECT StockGroupID FROM stockgroups WHERE StockGroupName LIKE :category))";
         $query_prepare = $db->prepare($query);
         $query_prepare->bindValue(':category', $category);
             if ($query_prepare->execute()) {
                 $rowcount = $query_prepare->rowCount();
-                print_r($rowcount);
                 $paginas = $rowcount / $_SESSION['max'];
                 while ($row = $query_prepare->fetch(PDO::FETCH_ASSOC)) {
                     $list[] = $row;

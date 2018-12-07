@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row"><center>
     <div class="col-lg-3">
         <div class="list-group">
             <a href="?category=Novelty%20Items&page=1" name="novelty" class="list-group-item">Novelty Items</a>
@@ -14,7 +14,7 @@
             <a href="?category=&page=1" name="clear" class="list-group-item">Verwijder Filter</a>
         </div>
     </div>
-</div>
+</div></center>
 <div class="container">
     <div class="row">
         <?php
