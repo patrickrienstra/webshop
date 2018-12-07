@@ -1,38 +1,119 @@
 <?php
-if(!$products == ''){
+if($products != ''){
     ?>
-    <div class="container cartcontainer">
-        <div class="row">
-            <?php
-            foreach ($products as $product) { ?>
-                <div class="thumbnail"><?php if ($product['photo'] == '') {
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach($products as $product){
+                            $subtotaal= $subtotaal +(($product['unitprice']*$product['amount']));
+                        }
+                        foreach($products as $product){
+                            $tototaal= $totaal +(($product['unitprice']*$product['amount'])*(1+($product['taxrate'])/100));
+                        }
+                        $btwBedrag = $tototaal-$subtotaal;
+                        foreach ($products as $product) { ?>
+                                    <tr>
+                                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                        <td><?php echo $product['stockitemname'];?></td>
+                                        <td>In stock</td>
+                                        <form method="post" action="change.php">
+                                        <td><input class="form-control" type="number" name="qty" value="<?php echo $product['amount'];?>" max="25" min="1"></td>
+                                        <td class="text-right"><?php echo '$ '.($product['unitprice'] * $product['amount']); ?></td>
+                                        <input type="hidden" name="id" value="<?php echo $product['stockitemid'];?>">
+                                        <td class="text-right"><input type="submit" class="btn btn-add" name="wijzig" value="wijzigen"></td>
+                                        <td class="text-right"><input type="submit" class="btn btn-danger" name="del" value="x"></td>
+                                        </form>
+                                    </tr>
+                            <?php
+                        }
                         ?>
-                        <div class="pull-left">
-                        <img class="workshop" src="http://placehold.it/320x150">
-                    <?php } else { ?>
-                        <img class="workshop" src="<? echo $product['photo']; ?>">
-                    <?php } ?>
-                        </div>
-                    <div class="caption">
-                        <h4><?php echo $product['stockitemname'];
-                            print("<br>"); ?></h4>
-                        <h4 class="pull-right"><?php echo $product['brand'];
-                            print("<br>"); ?></h4>
-                        <h4 class="pull-right"><?php echo '$ '.$product['unitprice']; ?></h4><br>
-                        <h4 class="pull-right"><?php echo '$ '.($product['unitprice'] * $product['amount']); ?></h4><br>
-                        <form method="post" action="change.php">
-                            <input type="number" name="qty" value="<?php echo $product['amount'];?>" max="25" min="1">
-                            <input type="hidden" name="id" value="<?php echo $product['stockitemid'];?>">
-                            <input type="submit" class="btn btn-add" name="wijzig" value="wijzigen">
-                            <input type="submit" class="btn btn-danger" name="del" value="x">
-                        </form>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Sub-Totaal</td>
+                            <td class="text-right"><?php echo "$". $subtotaal;?></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>BTW</strong></td>
+                            <td class="text-right"><strong><?php echo "$" . $btwBedrag;?></strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Totaal</strong></td>
+                            <td class="text-right"><strong><?php echo "$" . $tototaal;?></strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a href="shop.php?page=1"><button class="btn btn-block btn-light">Verder winkelen</button></a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <form method="post" action="persoonsgegevens.php"><input type="submit" name="submit" class="btn btn-lg btn-block btn-success text-uppercase" value="Bestellen"/></form>
+                </div>
+            </div>
+        </div>
+        <div class="row shop-tracking-status">
+            <div class="col-md-11">
+                <div class="order-status">
+                    <div class="order-status-timeline">
+                        <!-- class names: c0 c1 and c2 -->
+                        <div class="order-status-timeline-completion c0"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-new active img-circle">
+                        <span class="status">Winkelwagen</span>
+                        <div class="icon"></div>
+                    </div>
+                <div class="image-order-status image-order-status-active active img-circle">
+                    <span class="status">Gegevens</span>
+                    <div class="icon"></div>
+                </div>
+                    <div class="image-order-status image-order-status-intransit active img-circle">
+                        <span class="status">Betaling</span>
+                        <div class="icon"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-completed active img-circle">
+                        <span class="status">Afgerond</span>
+                        <div class="icon"></div>
                     </div>
                 </div>
-                <?php
-            }
-            ?>
+            </div>
         </div>
     </div>
+</div>
+
+
+</div>
     <?php
 }else{
     ?>
@@ -45,35 +126,3 @@ if(!$products == ''){
     </div>
 <?php
 }
-?>
-<aside>
-    <?php foreach($products as $product){
-        $subtotaal= $subtotaal +(($product['unitprice']*$product['amount']));
-    }
-    foreach($products as $product){
-        $tototaal= $totaal +(($product['unitprice']*$product['amount'])*(1+($product['taxrate'])/100));
-    }
-
-    ?>
-    <div class="cart-total">
-        <div class="form">
-            <form>
-                Subtotaal <br>
-                <input type="text" value="<?php print('$ '.$subtotaal);?>" class="center" disabled><br>
-                Totaal <br>
-                <input type="text" value="<?php print('$ '.$subtotaal);?>" class="center" disabled>
-            </form>
-            <form method="post" action="persoonsgegevens.php">
-                <?php if($products == ""){?>
-                    <input type="submit" class="btn btn-add" value="Bestellen" disabled>
-                <?php }else{?>
-                    <input type="submit" class="btn btn-add" value="Bestellen">
-                <?php } ?>
-            </form>
-            <form method="post" action="cart.php">
-                <input type="submit" class="btn btn-danger" name="ec" value="Empty Cart">
-            </form>
-        </div>
-    </div>
-</aside>
-

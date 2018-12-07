@@ -1,28 +1,18 @@
 <div class="login-page">
     <div class="form">
-        <?php
-        if($type==1 /*Betalen vooraf met iDEAL*/){
-            ?>
-            <a href="orderConfirmation.php"><img src="img/iDEAL.jpeg"></a>
-            <?php
-        }elseif($type==2 /*Betalen vooraf met paypal*/){
-            ?>
-            <a href="orderConfirmation.php"><img src="img/paypal.png"></a>
-            <?php
-        }elseif($type==3 /*Betalen achteraf met iDEAL*/){
-            ?>
-            <h4><a href="orderConfirmation.php"></a></h4>
-            <?php
-        }
-        ?>
+        <div class="login-form">
+            <a>Uw bestelling is verwerkt</a><br>
+            <a>Uw bestelnummer is <?php echo $invoiceID;?></a>
+        </div>
     </div>
 </div>
+
         <div class="row shop-tracking-status">
             <div class="col-md-11">
                 <div class="order-status">
                     <div class="order-status-timeline">
                         <!-- class names: c0 c1 and c2 -->
-                        <div class="order-status-timeline-completion c2"></div>
+                        <div class="order-status-timeline-completion c3"></div>
                     </div>
                     <div class="image-order-status image-order-status-new active img-circle">
                         <span class="status">Winkelwagen</span>
@@ -43,4 +33,3 @@
                 </div>
             </div>
         </div>
-
