@@ -11,9 +11,11 @@
     define('DBNAME','wideworldimporters');
     define('DBUSER','webuser');
     define('DBPASS','zPlv47aZ6N2bAyJL');
-
-    $db = new PDO("mysql:host=".DBHOST.";dbname=".DBNAME, DBUSER, DBPASS);
+try {
+    $db = new PDO("mysql:host=" . DBHOST . ";dbname=" . DBNAME, DBUSER, DBPASS);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   
+}catch (PDOException $e){
+    $e='Error 101: PDO_exception';
+}
 
 ?>

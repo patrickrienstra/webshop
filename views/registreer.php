@@ -24,7 +24,7 @@
             <input type="text" name="r_address" placeholder="Street address" required/>
             <input type="text" name="r_zipcode" placeholder="Zip code" required/>
             <input type="text" name="r_city" placeholder="City" required/>
-            <input type="number" name="r_phone" placeholder="Mobile number"/>
+            <input type="text" name="r_phone" placeholder="Mobile number"/>
             <input type="text" name="r_email" placeholder="Email address" required/>
             <input type="submit" name="register" value="Register" class="register-submit">
         </form>

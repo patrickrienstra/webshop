@@ -17,19 +17,33 @@
     </head>
     <body>
         <nav class="header">
-            <ul class="ul">
-                <li class="brand brand-Desktop"><h1>Wide World Importers</h1></li>
-                <li class="nav-items <?php if($sectionActive == "Home") { echo "active";} ?> "><a href="index.php">Home</a></li>
-                <li class="nav-items <?php if($sectionActive == "About") { echo "active";} ?> "><a href="about.php">Over ons</a></li>
-                <li class="nav-items <?php if($sectionActive == "Shop") { echo "active";} ?> "><a href="shop.php?page=1">Webshop</a></li>
-                <li class="nav-items <?php if($sectionActive == "Contact") { echo "active";}?> "><a href="contact.php">Contact</a></li>
-                <?php
-                    if(!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] == false)) {
-                        ?><li class="nav-items <?php if($sectionActive == "Login") { echo "active";}?> "><a href="login.php">Login</a></li><?php
+            <?php
+            if(!isset($e)) {
+                ?>
+                <ul class="ul">
+                    <li class="brand brand-Desktop"><h1>Wide World Importers</h1></li>
+                    <li class="nav-items <?php if ($sectionActive == "Home") {
+                        echo "active";
+                    } ?> "><a href="index.php">Home</a></li>
+                    <li class="nav-items <?php if ($sectionActive == "About") {
+                        echo "active";
+                    } ?> "><a href="about.php">Over ons</a></li>
+                    <li class="nav-items <?php if ($sectionActive == "Shop") {
+                        echo "active";
+                    } ?> "><a href="shop.php?page=1">Webshop</a></li>
+                    <li class="nav-items <?php if ($sectionActive == "Contact") {
+                        echo "active";
+                    } ?> "><a href="contact.php">Contact</a></li>
+                    <?php
+                    if (!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] == false)) {
+                        ?>
+                    <li class="nav-items <?php if ($sectionActive == "Login") {
+                        echo "active";
+                    } ?> "><a href="login.php">Login</a></li><?php
                     } else {
 
                         echo "<li class='nav-items";
-                        if($sectionActive == 'Controlpanel') {
+                        if ($sectionActive == 'Controlpanel') {
                             echo ' active';
                         }
                         echo "'><a href='accountdetails.php'>Profile</a></li>";
@@ -37,16 +51,25 @@
                         echo "<li class='nav-items'><a href='logout.php'>Logout</a></li>";
                     };
 
-                ?>
-            </ul>
-            <div class="pull-right">
-                <pi <?php if($sectionActive == "Cart"){ echo "active";}?>"><a href="cart.php"><img src="img/cart.png" class="cart-img"></a>
-            </div>
+                    ?>
+                </ul>
+                <div class="pull-right">
+                    <pi <?php if ($sectionActive == "Cart") {
+                        echo "active";
+                    } ?>"><a href="cart.php"><img src="img/cart.png" class="cart-img"></a>
+                </div>
+                <?php
+            }
+            ?>
         </nav>
-
         <?php
+        if(isset($e) && !$_GET['error']) {
+            header('location: error.php?error=1');
+        }
         include $view;
-        include ("inc/footer.php");
+        if(!isset($e)) {
+            include("inc/footer.php");
+        }
         ?>
         <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
