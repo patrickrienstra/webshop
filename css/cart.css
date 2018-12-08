@@ -29,6 +29,10 @@
     top: 10px;
     right: 5px;
 }
+.cartimg{
+    height: 10%;
+    width: 10%;
+}
 
 @import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
 

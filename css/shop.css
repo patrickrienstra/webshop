@@ -11,7 +11,7 @@
     padding: 1%;
 }
 .thumbnail {
-    height: 280px;
+    height: 300px;
     margin-top: 4px;
 }
 .pagenumber {
@@ -28,4 +28,11 @@
 .thumbnail2{
     margin-top: 4px;
 }
-
+.shopimg{
+    height: 55%;
+    width: 55%;
+}
+.stockimg{
+    right: 23px;
+    position: absolute;
+}

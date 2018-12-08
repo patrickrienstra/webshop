@@ -81,13 +81,14 @@
         <div class="col-sm-12 col-lg-12 col-md-12">
             <div class="thumbnail2">
                 <?php
-                if($row["photo"] == ""){
+                if($row["stockitemphoto"] == ""){
                     ?>
                     <img class="productimg" src="https://www.britax-roemer.nl/on/demandware.static/Sites-Britax-EU-Site/-/default/dwf9277f59/images/britax/PlaceholderProductImage.jpg" width="500" height="500">
                     <?php
-                }
+                }else{
                 ?>
-                <img class="productimg" src=<?php echo $row["photo"]; ?>>
+                <img class="productimg" src=<?php echo $row["stockitemphoto"]; ?>>
+                <?php }  ?>
                 <div class="caption">
                     <h4 class="pull-right"><?php echo '$ '.$row["unitprice"]; ?></h4>
                     <h4><?php echo $row["stockitemname"]; ?></h4>

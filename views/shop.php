@@ -15,7 +15,7 @@
             <a href="?category=Furry%20Footwear&page=1" name="furry" class="list-group-item">Furry Footwear</a>
             <a href="?category=Toys&page=1" name="toys" class="list-group-item">Toys</a>
             <a href="?category=Packaging%20Materials&page=1" name="packaging" class="list-group-item">Packaging Materials</a>
-            <a href="?category=&page=1" name="clear" class="list-group-item">Verwijder Filter</a>
+            <a href="?page=1" name="clear" class="list-group-item">Verwijder Filter</a>
         </div>
     </div>
 </div></center>
@@ -30,28 +30,40 @@
             }
         $pagep = $page-1;
         $pagen = $page+1;
+        if($page + 1 > $paginas){
+            $pagen=$paginas;
+        }
         print('<div><ul class="pagination">');
             if (!ISSET($_GET['category'])) {
-               echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
-               for($i = 1; $i <= $paginas; $i++) {
-                  if($page == $i) {
-                      echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
-                  } else {
-                      echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
-                  }
-            } else {
-                 echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
-                 for($i = 1; $i <= $paginas; $i++) {
-                     if($page == $i) {
-                         echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
-                     } else {
+                if($page != 1){
+                echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+                }
+                for($i = 1; $i <= $paginas; $i++) {
+                    if($page == $i) {
+                        echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
+                    } else {
                         echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
-                        echo "<a href='?category=".$_GET['category']."&page=" . $i . "' class='choosepage'>" . $i . "</a>";
-                     }
-              }
+                    }
+                }
+                if($page !=$paginas) {
+                    echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
+                }
+            }else{
+                if($page != 1) {
+                    echo "<li><a href='?category=" . $_GET['category'] . "&page=" . $pagep . "'>previous</a></li>";
+                }
+                for($i = 1; $i <= $paginas; $i++) {
+                    if($page == $i) {
+                        echo "<li class='active'><a href='?category=".$_GET['category']."&page=" . $i . "'>" . $i . "</a></li>";
+                    } else {
+                        echo "<li><a href='?category=".$_GET['category']."&page=" . $i . "'>" . $i . "</a></li>";
+                    }
+                }
+                if($page !=$paginas) {
+                    echo "<li><a href='?category=" . $_GET['category'] . "&page=" . $pagen . "'>next</a></li>";
+                }
             }
         }
-        echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
         print("</ul></div>");
         foreach($list as $id => $value) {
             if($id >= $_SESSION['max']*($page-1) && $id < $_SESSION['max']*$page) {?>
@@ -62,11 +74,22 @@
                     <?php
                     }else{
                         ?>
-                    <img src="<?php echo $value['StockItemPhoto'];?>">
+                    <img class="shopimg" src="<?php echo $value['StockItemPhoto'];?>">
                     <?php } ?>
                     <div class="caption">
                         <h4 class="pull-right"><?php echo '$ '.$value['unitprice']; ?></h4>
                         <h4><a href="product.php?id=<?php echo $value['stockitemid']; ?>"><?php echo $value['stockitemname']; ?></a></h4>
+                        <?php
+                        if($value['quantityonhand'] < 100){
+                            ?>
+                            <img class="stockimg" src="img/red_dot.png">
+                            <?php
+                        }else{
+                            ?>
+                            <img class="stockimg" src="img/green_dot.png">
+                            <?php
+                        }
+                        ?>
                     </div>
                     <form method="post" action="inCart.php">
                         <select name="qty">
@@ -86,8 +109,14 @@
             <?php
             }
         }
-        print('<div><ul class="pagination">');
-        echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+        ?>
+    </div>
+    <?php
+    print('<div><ul class="pagination">');
+    if (!ISSET($_GET['category'])) {
+        if($page != 1){
+            echo "<li><a href='?page=" . $pagep . "'>previous</a></li>";
+        }
         for($i = 1; $i <= $paginas; $i++) {
             if($page == $i) {
                 echo "<li class='active'><a href='?page=" . $i . "'>" . $i . "</a></li>";
@@ -95,17 +124,25 @@
                 echo "<li><a href='?page=" . $i . "'>" . $i . "</a></li>";
             }
         }
-        echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
-        print("</ul></div>");
-        if(isset($error)){
-            ?>
-        <div>
-            <p> Deze pagina is op dit moment niet beschikbaar.</p>
-            <p> Neem contact op met de service desk.</p>
-            <p> Code: <?php echo $error; ?></p>
-        </div>
-        <?php
+        if($page !=$paginas) {
+            echo "<li><a href='?page=" . $pagen . "'>next</a></li>";
         }
-            ?>
-    </div>
+    }else{
+        if($page != 1) {
+            echo "<li><a href='?category=" . $_GET['category'] . "&page=" . $pagep . "'>previous</a></li>";
+        }
+        for($i = 1; $i <= $paginas; $i++) {
+            if($page == $i) {
+                echo "<li class='active'><a href='?category=".$_GET['category']."&page=" . $i . "'>" . $i . "</a></li>";
+            } else {
+                echo "<li><a href='?category=".$_GET['category']."&page=" . $i . "'>" . $i . "</a></li>";
+            }
+        }
+        if($page !=$paginas) {
+            echo "<li><a href='?category=" . $_GET['category'] . "&page=" . $pagen . "'>next</a></li>";
+        }
+
+    }
+    print("</ul></div>");
+?>
 </div>

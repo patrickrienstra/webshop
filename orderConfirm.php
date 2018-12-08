@@ -3,9 +3,6 @@ require_once 'inc/config.php';
 require_once 'inc/package.inc.php';
 $persoonsgegevens=array();
 $products=array();
-$subtotaal='';
-$totaal='';
-$taxamount='';
 if(isset($_SESSION['logged_in'])) {
     //query
     $query='SELECT FullName, Email, PhoneNumber, City, Zipcode, Address FROM webcustomer WHERE CustomerID=?';

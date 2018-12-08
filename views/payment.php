@@ -9,10 +9,6 @@
             ?>
             <a href="orderConfirmation.php"><img src="img/paypal.png"></a>
             <?php
-        }elseif($type==3 /*Betalen achteraf met iDEAL*/){
-            ?>
-            <h4><a href="orderConfirmation.php"></a></h4>
-            <?php
         }
         ?>
     </div>

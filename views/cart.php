@@ -1,5 +1,15 @@
 <?php
-if($products != ''){
+if($products == array()){
+    ?>
+    <div class="container cartcontainer">
+        <div class="row">
+            <div class="center">
+                <p><?php print('Winkelwagen is leeg'); ?></p>
+            </div>
+        </div>
+    </div>
+    <?php
+}else{
     ?>
 <div class="container mb-4">
     <div class="row">
@@ -40,18 +50,26 @@ if($products != ''){
                             $totaal = number_format((float)$totaal, 2, '.', '');
                         }
                         foreach ($products as $product) { ?>
-                                    <tr>
-                                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                        <td><?php echo $product['stockitemname'];?></td>
-                                        <td>In stock</td>
-                                        <form method="post" action="change.php">
-                                        <td><input class="form-control" type="number" name="qty" value="<?php echo $product['amount'];?>" max="25" min="1"></td>
-                                        <td class="text-right"><?php echo '$ '.($product['unitprice'] * $product['amount']); ?></td>
-                                        <input type="hidden" name="id" value="<?php echo $product['stockitemid'];?>">
-                                        <td class="text-right"><input type="submit" class="btn btn-add" name="wijzig" value="wijzigen"></td>
-                                        <td class="text-right"><input type="submit" class="btn btn-danger" name="del" value="x"></td>
-                                        </form>
-                                    </tr>
+                            <tr>
+                            <?php
+                            if($row["stockitemphoto"] == ""){
+                            ?>
+                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <?php
+                            }else{
+                            ?>
+                                <td><img class="cartimg" src=<?php echo $row["stockitemphoto"]; ?>></td>
+                            <?php }  ?>
+                                <td><?php echo $product['stockitemname'];?></td>
+                                <td>In stock</td>
+                                <form method="post" action="change.php">
+                                    <td><input class="form-control" type="number" name="qty" value="<?php echo $product['amount'];?>" max="25" min="1"></td>
+                                    <td class="text-right"><?php echo '$ '.($product['unitprice'] * $product['amount']); ?></td>
+                                    <input type="hidden" name="id" value="<?php echo $product['stockitemid'];?>">
+                                    <td class="text-right"><input type="submit" class="btn btn-add" name="wijzig" value="wijzigen"></td>
+                                    <td class="text-right"><input type="submit" class="btn btn-danger" name="del" value="x"></td>
+                                </form>
+                            </tr>
                             <?php
                         }
                         ?>
@@ -124,18 +142,6 @@ if($products != ''){
         </div>
     </div>
 </div>
-
-
-</div>
     <?php
-}else{
-    ?>
-    <div class="container cartcontainer">
-        <div class="row">
-            <div class="center">
-                <p><?php print('Winkelwagen is leeg'); ?></p>
-            </div>
-        </div>
-    </div>
-<?php
 }
+?>
