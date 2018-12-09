@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/config.php';
-require_once 'inc/package.inc.php';
 
 $date=date('Y-m-d');
 $chillerItems='';
@@ -11,7 +10,7 @@ $price=0;
 
 if(isset($_SESSION['cart'])) {
 //cart
-    $query4 = "SELECT stockitemid, stockitemname, brand, IsChillerStock ,unitprice, photo, taxrate FROM stockitems WHERE stockitemid = :id";
+    $query4 = "SELECT stockitemid, stockitemname, brand, IsChillerStock ,RecommendedRetailPrice, photo, taxrate FROM stockitems WHERE stockitemid = :id";
     foreach ($_SESSION['cart'] as $product) {
         $stmt = $db->prepare($query4);
         $stmt->bindValue(':id', $product['id'], PDO::PARAM_INT);
@@ -19,7 +18,7 @@ if(isset($_SESSION['cart'])) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $row['amount'] = $product['qty'];
             array_push($cart, $row);
-            $price += ($row['taxrate'] / 100 + 1) * $row['amount'] * $row['unitprice'];
+            $price += ($row['taxrate'] / 100 + 1) * $row['amount'] * $row['RecommendedRetailPrice'];
             if ($row['IsChillerStock'] == 1) {
                 $chillerItems++;
             } else {
@@ -90,8 +89,8 @@ if(isset($_SESSION['cart'])) {
         $stm3->bindValue(':invoiceid', $invoiceID);
         $stm3->bindValue(':stockitemid', $product['stockitemid']);
         $stm3->bindValue(':quantity', $product['amount']);
-        $stm3->bindValue(':tax', (($product['taxrate'] / 100) * $product['amount'] * $product['unitprice']));
-        $stm3->bindValue(':totalprice', (($product['taxrate'] / 100 + 1) * $product['amount'] * $product['unitprice']));
+        $stm3->bindValue(':tax', (($product['taxrate'] / 100) * $product['amount'] * $product['RecommendedRetailPrice']));
+        $stm3->bindValue(':totalprice', (($product['taxrate'] / 100 + 1) * $product['amount'] * $product['RecommendedRetailPrice']));
         $stm3->execute();
     }
 }

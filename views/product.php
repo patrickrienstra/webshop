@@ -1,4 +1,24 @@
-<div class="container">	
+<div class="row">
+    <center>
+        <div class="col-lg-3">
+            <div class="list-group">
+                <a href="shop.php?category=Novelty%20Items&page=1" name="novelty" class="list-group-item">Novelty Items</a>
+                <a href="shop.php?category=Clothing&page=1" name="clothing" class="list-group-item">Clothing</a>
+                <a href="shop.php?category=Mugs&page=1" name="mugs" class="list-group-item">Mugs</a>
+                <a href="shop.php?category=T-shirts&page=1" name="tshirts" class="list-group-item">T-Shirts</a>
+                <a href="shop.php?category=Airline%20Novelties&page=1" name="airline" class="list-group-item">Airline
+                    Novelties</a>
+                <a href="shop.php?category=Computing%20Novelties&page=1" name="computing" class="list-group-item">Computing
+                    Novelties</a>
+                <a href="shop.php?category=USB%20Novelties&page=1" name="usb" class="list-group-item">USB Novelties</a>
+                <a href="shop.php?category=Furry%20Footwear&page=1" name="furry" class="list-group-item">Furry Footwear</a>
+                <a href="shop.php?category=Toys&page=1" name="toys" class="list-group-item">Toys</a>
+                <a href="shop.php?category=Packaging%20Materials&page=1" name="packaging" class="list-group-item">Packaging
+                    Materials</a>
+            </div>
+        </div>
+</div></center>
+<div class="container">
     <div class="card">
         <div class="row">
             <aside class="col-sm-5 border-right">
@@ -6,13 +26,13 @@
                     <div class="img-big-wrap">
                       <div> <a href="#">        
                             <?php
-                            if($row["photo"] == ""){
+                            if($row["stockitemphoto"] == ""){
                             ?>
                             <img class="productimg" src="https://www.britax-roemer.nl/on/demandware.static/Sites-Britax-EU-Site/-/default/dwf9277f59/images/britax/PlaceholderProductImage.jpg" width="500" height="500">
                             <?php
                             }
                             ?>
-                            <img class="productimg" src=<?php echo $row["photo"]; ?>></a></div>
+                            <img class="productimg" src=<?php echo $row["stockitemphoto"]; ?>></a></div>
                     </div> <!-- slider-product.// -->
                 </article> <!-- gallery-wrap .end// -->
             </aside>
@@ -22,7 +42,7 @@
 
                     <p class="price-detail-wrap"> 
                         <span class="price h3 text-warning"> 
-                                <span class="currency">US</span><span class="num"><?php echo ' $ '. number_format((float)$row["unitprice"], 2, '.', ''); ?></span>
+                                <span class="currency">US</span><span class="num"><?php echo ' $ '. number_format((float)$row["RecommendedRetailPrice"], 2, '.', ''); ?></span>
                         </span> 
                     </p> <!-- price-detail-wrap .// -->
                     <dl class="item-property">
@@ -72,55 +92,4 @@
                     </aside> <!-- col.// -->
         </div> <!-- row.// -->
     </div> <!-- card.// -->
-
-
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-lg-12 col-md-12">
-            <div class="thumbnail2">
-                <?php
-                if($row["stockitemphoto"] == ""){
-                    ?>
-                    <img class="productimg" src="https://www.britax-roemer.nl/on/demandware.static/Sites-Britax-EU-Site/-/default/dwf9277f59/images/britax/PlaceholderProductImage.jpg" width="500" height="500">
-                    <?php
-                }else{
-                ?>
-                <img class="productimg" src=<?php echo $row["stockitemphoto"]; ?>>
-                <?php }  ?>
-                <div class="caption">
-                    <h4 class="pull-right"><?php echo '$ '.$row["unitprice"]; ?></h4>
-                    <h4><?php echo $row["stockitemname"]; ?></h4>
-                    <p><?php echo $row["brand"]; ?></p>
-                    <p><?php echo $row["size"]; ?></p>
-                    <p><?php echo $row["leadtimedays"]; ?></p>
-                    <p><?php if($row['ischillerstock'] != 0){
-                        print("gekoeld bewaren");} ?></p>
-                    <p><?php echo $row["taxrate"]; ?></p>
-                    <p><?php echo $row["marketingcomments"]; ?></p>
-                    <p><?php echo $row["customfields"]; ?></p>
-                    <p><?php echo $row["colorname"]; ?></p>
-                    <p><?php if ($row['quantityonhand'] > 0){
-                        echo $row["quantityonhand"];
-                    }else{
-                        print('Dit product is niet op voorraad');
-                    } ?></p>
-                    <form method="post" action="inCart.php">
-                        quantity <select name="qty">
-                            <?php
-                            print($id);
-                            for($i=1; $i<=25; $i++){
-                                ?>
-                                <option name="qty" value="<?php echo $i;?>"><?php echo $i;?></option>
-                                <?php
-                            }?>
-                            <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"
-                        </select>
-                        <input type="submit" class="btn btn-add" name="product" value="in winkelmand">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

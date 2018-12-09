@@ -33,7 +33,7 @@
     height: 10%;
     width: 10%;
 }
-
+/*komt van: https://bootsnipp.com/snippets/featured/shopping-order-status*/
 @import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
 
 .shop-tracking-status .form-horizontal{margin-bottom:50px}

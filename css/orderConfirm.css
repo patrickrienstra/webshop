@@ -1,0 +1,18 @@
+.payment input {
+    margin: 0 0 5px 0 !important;
+    width: inherit !important;
+    background-color: #4CAF50;
+}
+
+.payment {
+    text-align: left;
+}
+
+.payment-box {
+    width: 200px;
+}
+
+.uitgelicht {
+    display: flex;
+    justify-content: space-between;
+}

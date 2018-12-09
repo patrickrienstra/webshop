@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/config.php';
-require_once 'inc/package.inc.php';
 $persoonsgegevens=array();
 $products=array();
 if(isset($_SESSION['logged_in'])) {
@@ -23,7 +22,7 @@ if(isset($_SESSION['logged_in'])) {
 }
 
 if(isset($_SESSION['cart'])) {
-    $query = "SELECT unitprice, taxrate FROM stockitems WHERE stockitemid = :id";
+    $query = "SELECT RecommendedRetailPrice, taxrate FROM stockitems WHERE stockitemid = :id";
     foreach ($_SESSION['cart'] as $product) {
         $stmt = $db->prepare($query);
         $stmt->bindValue(':id', $product['id'], PDO::PARAM_INT);
@@ -37,19 +36,19 @@ if(isset($_SESSION['cart'])) {
 
 foreach($products as $product) {
     if(!isset($subtotaal)){
-        $subtotaal = $product['unitprice']*$product['amount'];
+        $subtotaal = $product['RecommendedRetailPrice']*$product['amount'];
     } else {
-        $subtotaal += $product['unitprice'] * $product['amount'];
+        $subtotaal += $product['RecommendedRetailPrice'] * $product['amount'];
     }
     if(!isset($taxamount)){
-        $taxamount = $product['unitprice']*$product['amount']*($product['taxrate']/100);
+        $taxamount = $product['RecommendedRetailPrice']*$product['amount']*($product['taxrate']/100);
     }else{
-        $taxamount += $product['unitprice']*$product['amount']*($product['taxrate']/100);
+        $taxamount += $product['RecommendedRetailPrice']*$product['amount']*($product['taxrate']/100);
     }
     if(!isset($totaal)){
-        $totaal = $product['unitprice']*$product['amount']*($product['taxrate']/100+1);
+        $totaal = $product['RecommendedRetailPrice']*$product['amount']*($product['taxrate']/100+1);
     }else{
-        $totaal += $product['unitprice']*$product['amount']*($product['taxrate']/100+1);
+        $totaal += $product['RecommendedRetailPrice']*$product['amount']*($product['taxrate']/100+1);
     }
 }
 

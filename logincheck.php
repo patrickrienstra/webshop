@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/config.php';
-require_once "inc/package.inc.php";
 
 if(isset($_POST['login'])) {
     $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_STRING);
