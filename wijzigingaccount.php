@@ -1,6 +1,5 @@
 <?php
 require_once'inc/config.php';
-require_once 'inc/package.inc.php';
 
 $wfullname = filter_input(INPUT_POST, 'w_fullname', FILTER_SANITIZE_STRING);
 $waddress = filter_input(INPUT_POST, 'w_address', FILTER_SANITIZE_STRING);

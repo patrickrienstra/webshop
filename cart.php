@@ -1,9 +1,12 @@
 <?php
 require_once 'inc/config.php';
-require_once 'inc/package.inc.php';
-?>
 
-<?php
+//checken op errors
+if (isset($e)) {
+    header('location: error.php');
+}
+
+//checken of winkelmand leeg gemaakt moet worden
 if(isset($_POST['ec'])){
     unset($_SESSION['cart']);
 }
@@ -13,8 +16,9 @@ $row = array();
 $subtotaal = 0;
 $totaal = 0;
 
+// ophalen product gegevens
 if(isset($_SESSION['cart'])) {
-    $query = "SELECT stockitemid, stockitemname, brand, unitprice, stockitemphoto, taxrate FROM stockitems WHERE stockitemid = :id";
+    $query = "SELECT stockitemid, stockitemname, brand, RecommendedRetailPrice, stockitemphoto, taxrate FROM stockitems WHERE stockitemid = :id";
     foreach ($_SESSION['cart'] as $product) {
         $stmt = $db->prepare($query);
         $stmt->bindValue(':id', $product['id'], PDO::PARAM_INT);
@@ -25,6 +29,7 @@ if(isset($_SESSION['cart'])) {
         }
     }
 }
+
 $view = 'views/cart.php';
 $sectionActive = "Cart";
 require_once $template;

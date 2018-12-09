@@ -1,5 +1,4 @@
 <?php
-require_once 'inc/package.inc.php';
 require_once 'inc/config.php';
 
 $query='SELECT PersonID, FullName, PhoneNumber, EmailAddress FROM people';

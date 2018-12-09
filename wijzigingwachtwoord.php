@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/config.php';
-require_once 'inc/package.inc.php';
 
 if(isset($_POST['wachtwoordwijzigen'])) {
     $newpassword=filter_input(INPUT_POST, 'newpassword');
