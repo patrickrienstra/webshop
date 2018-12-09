@@ -1,6 +1,7 @@
 <div class="row">
     <center>
         <div class="col-lg-3">
+            <h3>Productcategorieën</h3>
             <div class="list-group">
                 <a href="?category=Novelty%20Items&page=1" name="novelty" class="list-group-item">Novelty Items</a>
                 <a href="?category=Clothing&page=1" name="clothing" class="list-group-item">Clothing</a>
@@ -15,7 +16,11 @@
                 <a href="?category=Toys&page=1" name="toys" class="list-group-item">Toys</a>
                 <a href="?category=Packaging%20Materials&page=1" name="packaging" class="list-group-item">Packaging
                     Materials</a>
+                <?php
+                if (ISSET($_GET['category'])) {
+                ?>
                 <a href="?page=1" name="clear" class="list-group-item">Verwijder Filter</a>
+                <?php }?>
             </div>
         </div>
 </div></center>

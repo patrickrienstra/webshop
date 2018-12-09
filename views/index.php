@@ -1,6 +1,7 @@
 <div class="row">
     <center>
         <div class="col-lg-3">
+            <h3>Productcategorieën</h3>
             <div class="list-group">
                 <a href="shop.php?category=Novelty%20Items&page=1" name="novelty" class="list-group-item">Novelty Items</a>
                 <a href="shop.php?category=Clothing&page=1" name="clothing" class="list-group-item">Clothing</a>
