@@ -8,13 +8,14 @@ if (isset($e)) {
 
 $list = array();
 $date = date('Y-m-d');
-$query = "SELECT s.stockitemid, s.stockitemname, s.StockItemPhoto
-    FROM stockitems s
-    JOIN web_invoicelines f ON s.stockitemid = f.stockitemid
-    JOIN web_invoices w ON w.invoiceid = f.invoiceid
-    WHERE invoicedate=:date
-    GROUP BY s.stockitemid
-    HAVING SUM(quantity) >= 20";
+$query = "SELECT s.stockitemid, s.stockitemname, s.StockItemPhoto, f.quantity
+          FROM stockitems s
+          JOIN web_invoicelines f on s.stockitemid = f.stockitemid
+          JOIN web_invoices w on w.invoiceid = f.invoiceid
+          WHERE invoicedate=:date
+          GROUP BY s.stockitemid
+          ORDER BY SUM(quantity) DESC
+          LIMIT 6";
 $query_prepare = $db->prepare($query);
 $query_prepare->bindValue(':date', $date);
 if ($query_prepare->execute()) {

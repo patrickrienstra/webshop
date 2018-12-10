@@ -20,7 +20,9 @@
 </div></center>
 <div class="container">
     <h1>Welkom bij World Wide Importers!</h1>
-    <p>Haaaaaaaaaalgalglakgaskfaskfsafslakfm Haaaaaaaaaalgalglakgaskfaskfsafslakfm Haaaaaaaaaalgalglakgaskfaskfsafslakfm
-        Haaaaaaaaaalgalglakgaskfaskfsafslakfm Haaaaaaaaaalgalglakgaskfaskfsafslakfm
-        Haaaaaaaaaalgalglakgaskfaskfsafslakfm Haaaaaaaaaalgalglakgaskfaskfsafslakfm.</p>
+    <p align="left">Van nature probeert Wide World Importers het elke dag beter te doen.
+        World Wide Importers is voor velen in het verre buitenland een gevestigde naam op de markt.
+        Vandaag de dag is Wide World Importers een snelgroeiend netwerk van miljoenen klanten.
+        Wide World Importers staat dus middenin de samenleving. En we voelen ons verantwoordelijk om daar een positieve bijdrage aan te leveren.
+        Sindskort hebben wij besloten om ons ook te gaan vestigen in Nederland.</p>
 </div>
