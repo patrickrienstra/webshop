@@ -41,9 +41,9 @@ if ($products == array()) {
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
+                            <th scope="col">Beschikbaarheid</th>
+                            <th scope="col" class="text-center">Hoeveelheid</th>
+                            <th scope="col" class="text-right">Prijs</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -82,7 +82,7 @@ if ($products == array()) {
                                     <td><img class="cartimg" src=<?php echo $row["stockitemphoto"]; ?>></td>
                                 <?php } ?>
                                 <td><?php echo $product['stockitemname']; ?></td>
-                                <td>In stock</td>
+                                <td>Op voorraad</td>
                                 <form method="post" action="change.php">
                                     <td><input class="form-control" type="number" name="qty"
                                                value="<?php echo $product['amount']; ?>" max="25" min="1"></td>

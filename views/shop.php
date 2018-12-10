@@ -76,8 +76,8 @@
                     ?>
             </div>
             <form class="product-search" action="shop.php" method="get">
-                <input type="text" name="value" placeholder="zoeken">
-                <input type="submit" name="search" value="zoeken" class="btn btn-primary">
+                <input type="text" name="value" placeholder="Typ uw zoekopdracht">
+                <input type="submit" name="search" value="Zoeken" class="btn btn-primary">
             </form>
 
         </div>
@@ -100,11 +100,16 @@
                                 <a href="product.php?id=<?php echo $value['stockitemid']; ?>"><?php echo $value['stockitemname']; ?></a>
                             </h4>
                             <?php
-                            if ($value['quantityonhand'] < 100) {
+                            if ($value['quantityonhand'] > 0 && $value['quantityonhand'] < 100) {
+                                ?>
+                                <img class="stockimg" src="img/orange_dot.png">
+                                <?php
+                            }elseif ($value['quantityonhand'] == 0) {
                                 ?>
                                 <img class="stockimg" src="img/red_dot.png">
                                 <?php
-                            } else {
+                            }
+                            else {
                                 ?>
                                 <img class="stockimg" src="img/green_dot.png">
                                 <?php
@@ -122,7 +127,7 @@
                                 } ?>
                                 <input type="hidden" name="id" value="<?php echo $value['stockitemid']; ?>">
                                 <input type="hidden" name="page" value="<?php echo $page ?>">
-                                <input type="submit" name="shop" value="in winkelmand" class="btn btn-add">
+                                <input type="submit" name="shop" value="In Winkelmand" class="btn btn-add">
                         </form>
                     </div>
                 </div>

@@ -26,7 +26,6 @@
     <div class="row">
         <?php
         foreach ($list as $value) {
-            if ($i <= 6) {
                 ?>
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail index">
@@ -43,9 +42,6 @@
                 </div>
                 <?php
                 $i++;
-            } else {
-                break;
-            }
         }
         ?>
     </div>

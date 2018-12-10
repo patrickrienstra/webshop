@@ -25,7 +25,7 @@
             <input type="text" name="w_address" value="<?php echo $persoonsgegevens['Address'];?>" disabled>
             <input type="text" name="w_zipcode" value="<?php echo $persoonsgegevens['Zipcode'];?>" disabled>
             <input type="text" name="w_city" value="<?php echo $persoonsgegevens['City'];?>" disabled>
-            <input type="number" name="w_phone" value="<?php echo $persoonsgegevens['PhoneNumber'];?>" disabled">
+            <input type="tel" name="w_phone" value="<?php echo $persoonsgegevens['PhoneNumber'];?>" disabled">
             <input type="text" name="w_email" value="<?php echo $persoonsgegevens['Email'];?>" disabled>
         </form>
             <form class="register-form" action="accountdetails.php" method="POST">

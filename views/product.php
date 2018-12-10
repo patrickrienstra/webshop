@@ -39,29 +39,31 @@
             </aside>
             <aside class="col-sm-7">
                 <article class="card-body p-5">
-                    <h3 class="title mb-3"><?php echo $row["stockitemname"]; ?></h3>
+                    <h3 class="title mb-3" style="font-weight: bold;"><?php echo $row["stockitemname"]; ?></h3>
 
                     <p class="price-detail-wrap"> 
                         <span class="price h3 text-warning"> 
                                 <span class="currency">US</span><span class="num"><?php echo ' $ '. number_format((float)$row["RecommendedRetailPrice"], 2, '.', ''); ?></span>
                         </span> 
-                    </p> <!-- price-detail-wrap .// -->
+                    </p><br> <!-- price-detail-wrap .// -->
                     <dl class="item-property">
-                      <dt>Beschrijving: </dt>
+                        <dt style="font-weight: bold;">Beschrijving: </dt>
                       <dd><?php echo $row["marketingcomments"]; ?></dd>
-                      <dd><?php echo "verwachte levertijd: " . $row["leadtimedays"] . " dagen."; ?></dd>
+                        <br>
+                        <dt style="font-weight: bold;">Verwachte levertijd: </dt>
+                      <dd><?php echo $row["leadtimedays"] . " dagen"; ?></dd>
                     </dl>
                     <br>
                     <dl class="param param-feature">
-                       <dt>Voorraad: </dt>
-                        <dd><?php if ($row['quantityonhand'] > 0){ echo $row["quantityonhand"]; } else { print('Dit product is niet op voorraad');} ?></dd>
+                        <dt style="font-weight: bold;">Hoeveelheid op voorraad: </dt>
+                        <dd><?php if ($row['quantityonhand'] > 0){ echo $row["quantityonhand"]; } else { print('Dit product is momenteel niet op voorraad');} ?></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <dl class="param param-feature">
-                      <dd><?php if($row['ischillerstock'] != 0){ print("gekoeld bewaren");} ?></dd>
+                      <dd><?php if($row['ischillerstock'] != 0){ print("Gekoeld bewaren");} ?></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <br>
                     <dl class="param param-feature">
-                        <dt>Kleur:</dt>
+                        <dt style="font-weight: bold;">Kleur: </dt>
                         <dd><?php echo $row["colorname"]; ?></dd>
                     </dl>  <!-- item-property-hor .// -->
 
@@ -69,7 +71,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <dl class="param param-inline">
-                                <dt>Aantal: </dt>
+                                <dt style="font-weight: bold;">Aantal: </dt>
                                 <dd>
                                     <form method="post" action="inCart.php">
                                         <select name="qty" class="form-control form-control-sm" style="width:70px;">
@@ -83,7 +85,7 @@
                                             <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"
                                         </select>
                                         <br>
-                                        <input type="submit" class="btn btn-add" name="product" value="in winkelmand">
+                                        <input type="submit" class="btn btn-add" name="product" value="In Winkelmand">
                                     </form>
                                 </dd>
                             </dl>  <!-- item-property .// -->
