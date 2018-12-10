@@ -5,7 +5,7 @@ echo '<br>';
 $max = 20;
 
 
-$query = "SELECT InvoiceID, TotalPrice, InvoiceDate, ConfirmedDeliveryTime FROM web_invoices WHERE CustomerID=:customerid";
+$query = "SELECT InvoiceID, TotalPrice, InvoiceDate, ConfirmedDeliveryTime FROM web_invoices WHERE CustomerID=:customerid ORDER BY InvoiceID DESC";
 $stmt = $db->prepare($query);
 $stmt->bindValue(':customerid', $_SESSION['CustomerID']);
 if ($stmt->execute()) {
@@ -16,7 +16,6 @@ if ($stmt->execute()) {
     }
 
 }
-array_reverse($list);
 $paginas = ceil($paginas);
 
 $view = "views/myorders.php";
