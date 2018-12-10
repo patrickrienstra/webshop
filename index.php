@@ -12,7 +12,7 @@ $query = "SELECT s.stockitemid, s.stockitemname, s.StockItemPhoto, f.quantity
           FROM stockitems s
           JOIN web_invoicelines f on s.stockitemid = f.stockitemid
           JOIN web_invoices w on w.invoiceid = f.invoiceid
-          WHERE invoicedate = \"2018-12-10\"
+          WHERE invoicedate=:date
           GROUP BY s.stockitemid
           ORDER BY SUM(quantity) DESC
           LIMIT 6";
